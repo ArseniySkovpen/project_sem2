@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Circles.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -49,10 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Weapon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Circles.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,17 +62,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 536,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 0,
               "Title": "Circles.cpp",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.cpp",
               "RelativeDocumentMoniker": "Circles.cpp",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.cpp",
               "RelativeToolTip": "Circles.cpp",
-              "ViewState": "AgIAADQCAAAAAAAAAAAAAMgDAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMEDAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-07T09:53:44.731Z",
               "IsPinned": true,
@@ -80,20 +80,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Weapon.cpp",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.cpp",
               "RelativeDocumentMoniker": "Weapon.cpp",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.cpp",
               "RelativeToolTip": "Weapon.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T12:29:34.925Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Circles.h",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.h",
               "RelativeDocumentMoniker": "Circles.h",
@@ -106,130 +106,130 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAAABgAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJ4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T12:12:18.815Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Player.cpp",
               "RelativeDocumentMoniker": "Player.cpp",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Player.cpp",
               "RelativeToolTip": "Player.cpp",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAFUAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T12:28:25.705Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Combat.h",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Combat.h",
               "RelativeDocumentMoniker": "Combat.h",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Combat.h",
               "RelativeToolTip": "Combat.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-20T12:51:14.653Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Weapon.h",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.h",
               "RelativeDocumentMoniker": "Weapon.h",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.h",
               "RelativeToolTip": "Weapon.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-20T12:29:27.787Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Player.h",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Player.h",
               "RelativeDocumentMoniker": "Player.h",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Player.h",
               "RelativeToolTip": "Player.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-20T12:14:12.658Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Combat.cpp",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Combat.cpp",
               "RelativeDocumentMoniker": "Combat.cpp",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Combat.cpp",
               "RelativeToolTip": "Combat.cpp",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAM4AAAAAAAAAAAAAABMBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-19T18:26:22.199Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Enemy.h",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.h",
               "RelativeDocumentMoniker": "Enemy.h",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.h",
               "RelativeToolTip": "Enemy.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-20T12:28:36.934Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Item.cpp",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Item.cpp",
               "RelativeDocumentMoniker": "Item.cpp",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Item.cpp",
               "RelativeToolTip": "Item.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T12:29:02.927Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Item.h",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Item.h",
               "RelativeDocumentMoniker": "Item.h",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Item.h",
               "RelativeToolTip": "Item.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-20T12:28:52.805Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Enemy.cpp",
               "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.cpp",
               "RelativeDocumentMoniker": "Enemy.cpp",
               "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.cpp",
               "RelativeToolTip": "Enemy.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T12:28:45.403Z",
               "EditorCaption": ""

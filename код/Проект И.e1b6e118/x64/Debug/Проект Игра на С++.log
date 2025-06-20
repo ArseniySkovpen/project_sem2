@@ -1,4 +1,9 @@
-﻿  Combat.cpp
+﻿  Circles.cpp
+  Combat.cpp
+  Enemy.cpp
+  Item.cpp
+  Player.cpp
+  Weapon.cpp
   main.cpp
   Создание кода...
   Проект Игра на С++.vcxproj -> C:\Users\HYPERPC\Desktop\project_sem2\код\x64\Debug\Проект Игра на С++.exe
