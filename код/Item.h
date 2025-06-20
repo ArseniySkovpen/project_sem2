@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ITEM_H
 #define ITEM_H
 
@@ -6,13 +5,15 @@
 
 class Item {
 public:
-    Item(const std::string& name, int value);
-    std::string GetName() const;
-    int GetValue() const;
+	Item(const std::string& name, int value);
+
+	const std::string& name() const;
+	int value() const;
+	std::string Use() const;
 
 private:
-    std::string name_;
-    int value_;
+	std::string name_;
+	int value_;
 };
 
-#endif // ITEM_H
+#endif  // ITEM_H

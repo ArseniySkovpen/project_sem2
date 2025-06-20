@@ -1,113 +1,94 @@
 #include <iostream>
-#include <vector>
-#include <string>
 #include <fstream>
-#include <limits>
-#include <cstdlib>
-#include <ctime>
+#include <memory>
 #include "Player.h"
-#include "Enemy.h"
-#include "Item.h"
-#include "Weapon.h"
+#include "Combat.h"
 #include "Circles.h"
+#include "json.hpp"
 
-using namespace std;
+using json = nlohmann::json;
 
-// Глобальные переменные
 Player player;
-int current_circle = 1;
+int current_circle;
+json player_texts;
+json ui_texts;
 
-// Прототипы функций
 void MainMenu();
 void NewGame();
 void LoadGame();
 void SaveGame();
-void Combat(Enemy& enemy);
 void GameOver();
-void SetCheckpoint();
-void LoadCheckpoint();
 
-// Вспомогательные функции объявлены в Circles.h, определения в Circles.cpp
-extern void clearScreen();
-extern void waitForKeyEmpty();
+void SetCheckpoint() {
+    std::ofstream file("save.txt");
+    if (file.is_open()) {
+        file << current_circle; // Сохраняем текущий круг
+        file.close();
+    }
+}
 
+void NewGame() {
+    current_circle = 1;
+    Circle1(); // Начинаем игру с первого круга
+}
 
 void MainMenu() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "|                                      |\n";
-    cout << "|          VISITING THE DEVIL          |\n";
-    cout << "|                                      |\n";
-    cout << "========================================\n";
-    cout << "1. Новая игра\n";
-    cout << "2. Загрузить последний чекпойнт\n";
-    cout << "3. Выйти из игры\n";
-    cout << "========================================\n";
+    ClearScreen();
+
+    // Загрузка текстов меню
+    std::ifstream file("assets/ui_texts.json");
+    json ui_texts;
+    if (file.is_open()) {
+        file >> ui_texts;
+        file.close();
+    }
+
+    // Вывод меню
+    for (const auto& line : ui_texts["main_menu"]) {
+        std::cout << line.get<std::string>() << "\n";
+    }
 
     int choice;
-    cin >> choice;
+    std::cin >> choice;
 
     switch (choice) {
     case 1:
         NewGame();
         break;
     case 2:
-        LoadCheckpoint();
+        LoadGame();
         break;
     case 3:
         exit(0);
     default:
+        std::cout << "Неверный выбор!\n";
+        WaitKey();
         MainMenu();
     }
 }
 
-void NewGame() {
-    player = Player();
-    current_circle = 1;
-    Circle1();
+bool LoadUiText() {
+    std::ifstream file("assets/ui_texts.json");
+    if (!file.is_open()) {
+        std::cerr << "Failed to load UI texts!\n";
+        return false;
+    }
+    try {
+        file >> ui_texts;
+        return true;
+    }
+    catch (json::parse_error& e) {
+        std::cerr << "JSON parse error: " << e.what() << "\n";
+        return false;
+    }
 }
 
 void LoadGame() {
-    ifstream save("save.txt");
-    if (save) {
-        save >> current_circle;
-        int health, max_health, honor;
-        save >> health >> max_health >> honor;
-
-        player = Player();
-        player.TakeDamage(100 - health);
-        player.ChangeHonor(honor - 50);
-
-        int weapon_damage;
-        string weapon_name, weapon_weak_spot;
-        save.ignore();
-        getline(save, weapon_name);
-        save >> weapon_damage;
-        save.ignore();
-        getline(save, weapon_weak_spot);
-
-        if (weapon_name != "nullptr") {
-            Weapon* weapon = new Weapon(weapon_name, weapon_damage, weapon_weak_spot);
-            player.EquipWeapon(weapon);
-        }
-        else {
-            player.EquipWeapon(nullptr);
-        }
-
-        int item_count;
-        save >> item_count;
-        for (int i = 0; i < item_count; ++i) {
-            string item_name;
-            int item_value;
-            save.ignore();
-            getline(save, item_name);
-            save >> item_value;
-            player.AddItem(Item(item_name, item_value));
-        }
-
-        save.close();
-        cout << "Игра загружена!\n";
-        waitForKeyEmpty();
+    std::ifstream file("save.txt");
+    if (file.is_open()) {
+        file >> current_circle;
+        file.close();
+        std::cout << "Игра загружена! Текущий круг: " << current_circle << "\n";
 
         switch (current_circle) {
         case 1: Circle1(); break;
@@ -119,195 +100,62 @@ void LoadGame() {
         case 7: Circle7(); break;
         case 8: Circle8(); break;
         case 9: Circle9(); break;
-        default: MainMenu();
+        default: Circle1();
         }
     }
     else {
-        cout << "Сохранение не найдено!\n";
-        waitForKeyEmpty();
+        std::cout << "Сохранение не найдено!\n";
+        WaitKey();
         MainMenu();
     }
 }
 
-void SaveGame() {
-    ofstream save("save.txt");
-    if (save) {
-        save << current_circle << "\n";
-        save << player.GetHealth() << " " << player.GetMaxHealth() << " " << player.GetHonor() << "\n";
-
-        if (player.GetWeapon()) {
-            save << player.GetWeapon()->GetName() << "\n";
-            save << player.GetWeapon()->GetDamage() << "\n";
-            save << player.GetWeapon()->GetWeakSpot() << "\n";
-        }
-        else {
-            save << "nullptr\n0\n\n";
-        }
-
-        save << player.GetInventoryCount() << "\n";
-        for (const auto& item : player.GetInventory()) {
-            save << item.GetName() << "\n";
-            save << item.GetValue() << "\n";
-        }
-
-        save.close();
+void GameOver() {
+    std::ifstream combat_file("assets/combat_system.json");
+    json combat_data;
+    if (combat_file.is_open()) {
+        combat_file >> combat_data;
+        combat_file.close();
     }
     else {
-        cout << "Ошибка сохранения!\n";
+        std::cerr << "Ошибка загрузки combat_system.json!\n";
+        return;
     }
-}
-
-void SetCheckpoint() {
-    SaveGame();
-    waitForKeyEmpty();
-}
-
-void LoadCheckpoint() {
-    LoadGame();
-}
-
-void Combat(Enemy& enemy) {
-    SetCheckpoint(); // Сохраняем перед боем
-
-    while (player.IsAlive() && enemy.IsAlive()) {
-        clearScreen();
-        cout << "========================================\n";
-        cout << "               БОЕВАЯ СИСТЕМА           \n";
-        cout << "========================================\n";
-        cout << "Ваше здоровье: " << player.GetHealth() << "/" << player.GetMaxHealth() << "\n";
-        cout << enemy.GetName() << ": " << enemy.GetHealth() << "/" << enemy.GetMaxHealth() << "\n";
-        cout << "----------------------------------------\n";
-        cout << enemy.GetDescription() << "\n";
-        if (!enemy.GetWeakSpot().empty()) {
-            cout << "Подсказка: " << enemy.GetWeakSpot() << "\n";
-        }
-        cout << "========================================\n";
-        cout << "1. Атаковать\n";
-        cout << "2. Использовать предмет\n";
-        cout << "3. Попытаться убежать\n";
-
-        int choice;
-        cin >> choice;
-
-        switch (choice) {
-        case 1: {
-            cout << "Выберите место для атаки:\n";
-            cout << "1. Корпус (обычный урон)\n";
-            cout << "2. Голова (повышенный урон)\n";
-            if (!enemy.GetWeakSpot().empty()) {
-                cout << "3. Уязвимое место (двойной урон, но сложнее попасть)\n";
-            }
-
-            int attack_choice;
-            cin >> attack_choice;
-
-            int damage = player.AttackDamage();
-            bool is_critical = false;
-
-            switch (attack_choice) {
-            case 1:
-                break;
-            case 2:
-                damage = static_cast<int>(damage * 1.5);
-                player.TakeDamage(enemy.GetDamage() / 2);
-                cout << "Вы наносите мощный удар, но получаете ответный удар!\n";
-                break;
-            case 3:
-                if (rand() % 100 < 60) {
-                    damage *= 2;
-                    is_critical = true;
-                    cout << "Вы попадаете в уязвимое место! Критический урон!\n";
-                }
-                else {
-                    cout << "Вы промахнулись по уязвимому месту!\n";
-                    damage = 0;
-                }
-                break;
-            default:
-                damage = 0;
-                cout << "Вы замешкались и пропустили ход!\n";
-            }
-
-            if (damage > 0) {
-                enemy.TakeDamage(damage);
-                cout << "Вы атаковали " << enemy.GetName() << " и нанесли " << damage << " урона!";
-                if (is_critical) cout << " [КРИТИЧЕСКИЙ УДАР]";
-                cout << "\n";
-            }
-
-            if (enemy.IsAlive()) {
-                int enemy_damage = enemy.GetDamage();
-                player.TakeDamage(enemy_damage);
-                cout << enemy.GetName() << " атаковал вас и нанес " << enemy_damage << " урона!\n";
-            }
-            else {
-                cout << "Вы победили " << enemy.GetName() << "!\n";
-                player.ChangeHonor(5);
-                SetCheckpoint(); // Сохраняем после победы
-            }
-            break;
-        }
-        case 2:
-            player.ShowInventory();
-            if (!player.IsAlive()) return;
-
-            cout << "Выберите предмет для использования: ";
-            int item_choice;
-            cin >> item_choice;
-            player.UseItem(item_choice - 1);
-            break;
-        case 3: {
-            int chance = rand() % 100;
-            if (chance < 30) {
-                cout << "Вам удалось сбежать!\n";
-                waitForKeyEmpty();
-                return;
-            }
-            else {
-                cout << "Попытка побега не удалась!\n";
-                int half_damage = enemy.GetDamage() / 2;
-                player.TakeDamage(half_damage);
-                cout << enemy.GetName() << " атаковал вас и нанёс " << half_damage << " урона!\n";
-            }
-            break;
-        }
-        default:
-            continue;
-        }
-
-        waitForKeyEmpty();
+    ClearScreen();
+    for (const auto& line : combat_data["combat"]["system"]["messages"]["game_over"]) {
+        std::cout << line.get<std::string>() << "\n";
     }
-
-    if (!player.IsAlive()) {
-        GameOver();
-    }
-}
-
-void GameOver() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "            ВЫ ПОГИБЛИ                 \n";
-    cout << "========================================\n\n";
-    cout << "Ваше путешествие по аду закончилось. Возможно, в следующий раз вам повезёт больше.\n\n";
-    waitForKeyEmpty();
+    WaitKey();
     MainMenu();
 }
 
-// Прототипы для кругов (реализация в Circles.cpp)
-void Circle1();
-void Circle2();
-void Circle3();
-void Circle4();
-void Circle5();
-void Circle6();
-void Circle7();
-void Circle8();
-void Circle9();
-void FinalBattle();
+void SaveGame() {
+    std::ofstream file("savegame.sav");
+    if (file.is_open()) {
+        file << current_circle;
+        file.close();
+        std::cout << "Игра сохранена!\n";
+    }
+    else {
+        std::cout << "Ошибка сохранения!\n";
+    }
+    WaitKey();
+}
 
 int main() {
-    srand(static_cast<unsigned int>(time(0)));
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "ru_RU.UTF-8");
+    srand(static_cast<unsigned>(time(nullptr)));
+
+    if (!LoadUiText()) {
+        std::cerr << "Error loading UI texts!" << std::endl;
+        return -1;
+    }
+
+    if (!Combat::LoadData("assets/combat_system.json", "assets/enemies.json")) {
+        std::cerr << "Error loading combat data!" << std::endl;
+        return -1;
+    }
+
     MainMenu();
     return 0;
 }

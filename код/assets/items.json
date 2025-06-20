@@ -1,0 +1,60 @@
+{
+  "potions": {
+    "healing_potion": {
+      "name": "Зелье лечения",
+      "value": 50,
+      "effect": {
+        "type": "health",
+        "amount": 50,
+        "message": "Вы восстановили {amount} здоровья!"
+      }
+    }
+  },
+  "weapons": {
+    "rusty_dagger": {
+      "name": "Ржавый кинжал",
+      "damage": 5,
+      "equip_text": "Вы экипировали Ржавый кинжал! Он наносит 5 единиц урона."
+    },
+    "wanderer_staff": {
+      "name": "Посох Странника",
+      "damage": 7,
+      "equip_text": "Вы экипировали Посох Странника!"
+    },
+    "butcher_axe": {
+      "name": "Топор мясника",
+      "damage": 10,
+      "equip_text": "Вы экипировали Топор мясника!"
+    },
+    "golden_dagger": {
+      "name": "Золотой кинжал",
+      "damage": 13,
+      "equip_text": "Вы экипировали Золотой кинжал!"
+    },
+    "silver_sword": {
+      "name": "Серебряный меч",
+      "damage": 16,
+      "equip_text": "Вы экипировали Серебряный меч!"
+    },
+    "flaming_sword": {
+      "name": "Пылающий меч",
+      "damage": 19,
+      "equip_text": "Вы экипировали Пылающий меч!"
+    },
+    "bone_sword": {
+      "name": "Рог Минотавра",
+      "damage": 21,
+      "equip_text": "Вы экипировали Рог Минотавра!"
+    },
+    "poisoned_dagger": {
+      "name": "Отравленный кинжал",
+      "damage": 25,
+      "equip_text": "Вы экипировали Отравленный кинжал!"
+    },
+    "ice_sword": {
+      "name": "Ледяной меч",
+      "damage": 30,
+      "equip_text": "Вы экипировали Ледяной меч!"
+    }
+  }
+}

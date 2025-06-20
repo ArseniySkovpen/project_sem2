@@ -1,10 +1,2 @@
-﻿  Circles.cpp
-  Enemy.cpp
-  Item.cpp
-  main.cpp
-  Player.cpp
-C:\Users\HYPERPC\Desktop\практика с++\Проект Игра на С++\Player.cpp(12,63): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-  Weapon.cpp
-  Создание кода...
-  LINK : не найден или не выполнена сборка C:\Users\HYPERPC\Desktop\практика с++\Проект Игра на С++\x64\Debug\Проект Игра на С++.exe при последней инкрементной компоновке; выполняется полная компоновка
-  Проект Игра на С++.vcxproj -> C:\Users\HYPERPC\Desktop\практика с++\Проект Игра на С++\x64\Debug\Проект Игра на С++.exe
+﻿  Combat.cpp
+  Проект Игра на С++.vcxproj -> C:\Users\HYPERPC\Desktop\практика с++\код\x64\Debug\Проект Игра на С++.exe

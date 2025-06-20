@@ -1,988 +1,969 @@
 #include <iostream>
-#include <limits>
 #include <cstdlib>
+#include <fstream>
+#include <limits>
+#include <string>
+#include <vector>
+
 #include "Circles.h"
-#include "Item.h"
-#include "Weapon.h"
-#include "Player.h"
 #include "Enemy.h"
+#include "Item.h"
+#include "Player.h"
+#include "Weapon.h"
+#include "Combat.h"
+
+#include "json.hpp"
+using json = nlohmann::json;
 
 using namespace std;
 
-// Внешние переменные из main.cpp
 extern Player player;
 extern int current_circle;
 
-void clearScreen() {
+static json circle_asset;
+json items_asset;
+
+void ClearScreen() {
     system("clear || cls");
 }
 
-void waitForKeyEmpty() {
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+void WaitKey() {
+    if (cin.rdbuf()->in_avail()) {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
     cin.get();
 }
 
+bool LoadItemsAsset(const std::string& filename) {
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cerr << circle_asset["errors"]["items_load_failed"].get<string>() << filename << endl;
+        return false;
+    }
+    try {
+        file >> items_asset;
+    }
+    catch (json::parse_error& e) {
+        cerr << circle_asset["errors"]["json_parse_error"].get<string>() << e.what() << endl;
+        return false;
+    }
+    return true;
+}
 
-// Первый круг - Лимб
-void Circle1() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "         ПЕРВЫЙ КРУГ АДА - ЛИМБ         \n";
-    cout << "========================================\n\n";
-    cout << "Вы оказываетесь в странном месте... Вокруг темно и душно. Вы не понимаете, "
-        "что произошло, потому что буквально пару секунд назад Вы переходили дорогу, идя в супермаркет.\n\n"
-        "Вы видите небольшое свечение вдалеке...\n\n"
-        "1. Идти на свет\n"
-        "2. Остаться на месте\n";
+bool LoadCircleAsset(const std::string& filename) {
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cerr << circle_asset["errors"]["circle_load_failed"].get<string>() << filename << endl;
+        return false;
+    }
+    try {
+        file >> circle_asset;
+    }
+    catch (json::parse_error& e) {
+        cerr << circle_asset["errors"]["json_parse_error"].get<string>() << e.what() << endl;
+        return false;
+    }
+    return true;
+}
+
+void PrintArray(const json& arr) {
+    for (const auto& line : arr) {
+        cout << line.get<string>() << "\n";
+    }
+}
+void PrintDelay(const json& arr) {
+    for (const auto& line : arr) {
+        cout << line.get<string>() << "\n";
+        WaitKey();
+    }
+}
+
+void Circle1()  {
+    if (!LoadCircleAsset("assets/circle1.json")) {
+        cerr << "Ошибка: не удалось загрузить circle1.json!" << endl;
+        return;
+    }
+    if (!LoadItemsAsset("assets/items.json")) {
+        cerr << "Failed to load items.json!" << endl;
+        return;
+    }
+    ClearScreen();
+    PrintArray(circle_asset["title"]);
+
+    PrintArray(circle_asset["description_intro"]);
 
     int choice;
     cin >> choice;
 
     if (choice == 1) {
-        clearScreen();
-        cout << "Вы идёте по какому-то коридору. Вокруг вас буквально ничего. Только "
-            "страшный гул, который пробирает вас изнутри. Подойдя вплотную к свечению, "
-            "вы видите проход.\n";
-        waitForKeyEmpty();
+        ClearScreen();
+        cout << circle_asset["path_light_text"].get<string>() << "\n";
+        WaitKey();
     }
     else {
-        clearScreen();
-        cout << "Резко свет пропадает за силуэтом странного человека... Он идет к вам навстречу, "
-            "хватает за руку и тащит вас к свету, несмотря на все ваши сопротивления. Перед "
-            "самым светом он пропадает, и ничего не остаётся, кроме как войти в это свечение...\n";
-        waitForKeyEmpty();
+        ClearScreen();
+        cout << circle_asset["path_stay_text"].get<string>() << "\n";
+        WaitKey();
     }
 
-    clearScreen();
+    ClearScreen();
+    cout << circle_asset["after_light_description"].get<string>() << "\n\n";
 
-    cout << "Пройдя сквозь свет, вы видите множество людей в белых одеяниях, зелёные луга, деревья. "
-        "Вы слышите знакомые имена... Цезарь, Платон, Аристотель... Где же вы?\n\n"
-        "Чуть поодаль стоит странный мужчина, непохожий на остальных... Вы решаете подойти к нему.\n\n"
-        "- Приветствую тебя!\n\n"
-        "- Здравствуйте, а где это я? (Для продолжения нажимайте Enter)\n";
-    waitForKeyEmpty();
+    PrintDelay(circle_asset["dialogues"]);
 
-    cout << "- Хах... Здравствуйте... Здесь так не говорят, дорогой мой. Ты умер.\n\n"
-        "- Что? Как это? Я же просто шёл в магазин!\n";
-
-    waitForKeyEmpty();
-
-    cout << "- Шёл и дорогу переходил, а по этой дороге ещё машина ехала, которая тебя и не заметила.\n\n"
-        "- Вот как... Хорошо, хоть я в рай попал...\n";
-
-    waitForKeyEmpty();
-
-    cout << "- Рай? С чего ты взял?\n\n"
-        "- Ну так... Всё зелёное, люди в белом, нет чертей.\n";
-
-    waitForKeyEmpty();
-
-    cout << "- Всё не так просто, как ты думаешь... Ты в Лимбе... Это Ад, правда только первый круг. "
-        "И судя по твоему прошлому, ты здесь оказался не случайно.\n\n"
-        "- А что не так с моим прошлым?\n";
-
-    waitForKeyEmpty();
-
-    cout << "- Так ты грешник, милок. Зная, сколько людей ты обманул на своём веку... Ты должен был "
-        "оказаться на 8 кругу. Но раз ты здесь, то небеса дают тебе второй шанс. Чтобы ты смог "
-        "пройти по всем кругам и помочь другим грешникам. Кому-то вознестись, кому-то помочь найти "
-        "духовного спокойствия и многое другое.\n\n"
-        "- Вот как... А почему именно я?\n";
-
-    waitForKeyEmpty();
-
-    cout << "- Не знаю. И не думаю, что кто-то другой знает. Только Сам Господь ведает.\n\n"
-        "- И что мне делать сейчас?\n";
-
-    waitForKeyEmpty();
-
-    cout << "- Иди и найди Харона. Он хранитель первого круга, перевозчик душ... Если сможешь его к себе "
-        "расположить и помочь грешнику, то он сможет направить тебя на второй круг. Увидимся на той стороне...\n\n";
-
-    waitForKeyEmpty();
-
-    cout << "Незнакомец исчез... Вы остались одни с осознанием того, что вы попали в Ад.\n\n"
-        "Что Вы будете делать дальше?\n\n"
-        "1. Пройтись по округе\n"
-        "2. Поговорить с людьми в округе о Хароне\n";
+    PrintArray(circle_asset["description_after_dialog"]);
 
     cin >> choice;
 
     if (choice == 1) {
-        clearScreen();
+        ClearScreen();
+        PrintDelay(circle_asset["find_potions"]);
+     
+        player.AddItem(Item(
+            items_asset["potions"]["healing_potion"]["name"].get<string>(),
+            items_asset["potions"]["healing_potion"]["value"].get<int>()
+        ));
+        player.AddItem(Item(
+            items_asset["potions"]["healing_potion"]["name"].get<string>(),
+            items_asset["potions"]["healing_potion"]["value"].get<int>()
+        ));
 
-        cout << "Вы идёте вдоль зелёных лугов и не можете поверить, что это ад.\n"; 
-        waitForKeyEmpty();
+        player.EquipWeapon(std::make_unique<Weapon>(
+            items_asset["weapons"]["rusty_dagger"]["name"].get<string>(),
+            items_asset["weapons"]["rusty_dagger"]["damage"].get<int>(),
+            items_asset["weapons"]["rusty_dagger"]["equip_text"].get<string>()
+        ));
 
-        cout << "За одним из кустов вы замечаете поблёскивание...\n";
-        waitForKeyEmpty();
-
-        cout << "Это оказывается два бутылька с красной жидкостью\n";
-        waitForKeyEmpty();
-
-        cout << "На приклеенной на бутыльках бумажке написано: Зелье лечения\n";
-        waitForKeyEmpty();
-
-        cout << "Поздравляю! Вы нашли Зелье лечения. Эти небольшие флакончики порой могут спасти вам жизнь. "
-            "Не забывайте всегда носить с собой парочку.\n";
-        waitForKeyEmpty();
-
-        cout << "Теперь вам доступен инвентарь! Помните, место ограничено!\n";
-        player.AddItem(Item("Зелье лечения", 50));
-        player.AddItem(Item("Зелье лечения", 50));
-        waitForKeyEmpty();
-
-        clearScreen();
-        cout << "Вы идёте дальше и замечаете протоптанную, словно табуном, тропинку.\n";
-        waitForKeyEmpty();
-
-        cout << "- Хм... Если тут ходит так много людей, может там я и найду Харона\n";
-        waitForKeyEmpty();
-
-        cout << "Идя по протоптанной тропинке, вы находите маленький, ржавый кинжал.\n\n";
-        Weapon* dagger = new Weapon("Ржавый кинжал", 5, "Может заразить противника");
-        player.EquipWeapon(dagger);
-        cout << "Вы экипировали Ржавый кинжал! Кинжал нвносит 5 урона\n";
-        cout << "У вас появилось первое оружие! Во время вашего путешествия вы будете находить новые клинки и не только.\n";
-        waitForKeyEmpty();
+        WaitKey();
     }
     else {
-        clearScreen();
-        cout << "Вы подходите к людям, которые что-то обсуждают.\n";
-        waitForKeyEmpty();
+        ClearScreen();
+        PrintDelay(circle_asset["talk_to_people"]);
 
-        cout << "Один из них вас замечает.\n";
-        waitForKeyEmpty();
+        player.AddItem(Item(
+            items_asset["potions"]["healing_potion"]["name"].get<string>(),
+            items_asset["potions"]["healing_potion"]["value"].get<int>()
+        ));
+        player.AddItem(Item(
+            items_asset["potions"]["healing_potion"]["name"].get<string>(),
+            items_asset["potions"]["healing_potion"]["value"].get<int>()
+        ));
 
-        cout << "- О, Новенький! С прибытием! Держи, угощайся!\n";
-        waitForKeyEmpty();
+        WaitKey();
 
-        cout << "Он даёт вам бутылёк с красной жидкостью\n";
-        waitForKeyEmpty();
-
-        cout << "На приклеенной на бутылёк бумажке написано: Зелье лечения\n\n";
-        player.AddItem(Item("Зелье лечения", 50));
-        player.AddItem(Item("Зелье лечения", 50));
-        cout << "Поздравляю! Вы нашли Зелье лечения. Эти небольшие флакончики порой могут спасти вам жизнь. "
-            "Не забывайте всегда носить с собой парочку.\n";
-        waitForKeyEmpty();
-        waitForKeyEmpty();
-
-
-        cout << "- Большое спасибо за угощение! Вы не подскажите, где найти Харона?\n";
-        waitForKeyEmpty();
-
-        cout << "- Харона? Зачем он тебе?\n";
-        waitForKeyEmpty();
-
-        cout << "- Да я пока и сам не понимаю... Но судя по всему у меня есть миссия. И для её выполнения мне нужен Харон.\n";
-        waitForKeyEmpty();
-
-        cout << "- Вот как. Ну раз так, то конечно подскажем. Иди вот по той тропинке к реке. Там ты увидишь пристань. Оттуда Харон перевозит души.\n";
-        waitForKeyEmpty();
-
-        cout << "- Большое спасибо\n";
-        waitForKeyEmpty();
-
-        cout << "Идя по протоптанной тропинке, вы находите маленький, ржавый кинжал.\n\n";
-        Weapon* dagger = new Weapon("Ржавый кинжал", 5, "Может заразить противника");
-        player.EquipWeapon(dagger);
-        cout << "Вы экипировали Ржавый кинжал! Кинжал наносит 5 урона\n\n";
-        cout << "У вас появилось первое оружие! Во время вашего путешествия вы будете находить новые клинки и не только.\n";
-        waitForKeyEmpty();
+        player.EquipWeapon(std::make_unique<Weapon>(
+            items_asset["weapons"]["rusty_dagger"]["name"].get<string>(),
+            items_asset["weapons"]["rusty_dagger"]["damage"].get<int>(),
+            items_asset["weapons"]["rusty_dagger"]["equip_text"].get<string>()
+        ));
+        WaitKey();
     }
+    ClearScreen();
 
-    clearScreen();
-    cout << "Вы выходите на берег реки. Там находится небольшая деревянная пристань и огромная очередь из людей.\n"
-        "Около пристани стоит небольшая лодка, на которой, держа весло, стоит уродливый старик с растрёпанными волосами\n"
-        "Судя по всему это Харон...\n\n"
-        "1. Обойти очередь и подойти к старику\n"
-        "2. Быть добросовестным и отстоять очередь\n";
+    PrintArray(circle_asset["pier"]);
 
     cin >> choice;
 
     if (choice == 1) {
-        clearScreen();
-        cout << "При попытке обойти очередь вас ловят за одежду двое мужчин и доходчиво объясняют, что так делать нельзя\n";
+        ClearScreen();
+        PrintDelay(circle_asset["rope_choice1_fail"]);
         player.TakeDamage(10);
         player.ChangeHonor(-10);
-        cout << "Наверху замечают, что вы ведёте себя нечестно.\n";
-        cout << "Ваша честь уменьшена на 10.\n Ведите себя добросовестно! Это повлияет на ваше будещее!\n";
-        cout << "Вдобавок вам надавали по лицу.\n -10 HP\n ";
-        waitForKeyEmpty();
-
-        cout << "Вы стоите в очереди очень долгое время.\n";
-        waitForKeyEmpty();
-        cout << "Очень долгое время\n";
-        waitForKeyEmpty();
-        cout << "ОЧЕНЬ ДОЛГОЕ ВРЕМЯ\n";
-        waitForKeyEmpty();
-        cout << "Наконец до вас доходит очередь\n";
-        waitForKeyEmpty();
+      
     }
     else {
-        clearScreen();
-        cout << "Вы стоите в очереди очень долгое время.\n";
-        waitForKeyEmpty();
-        cout << "Очень долгое время\n";
-        waitForKeyEmpty();
-        cout << "ОЧЕНЬ ДОЛГОЕ ВРЕМЯ\n";
-        waitForKeyEmpty();
-        cout << "Наконец до вас доходит очередь\n\n";
+        ClearScreen();
+        PrintDelay(circle_asset["rope_choice2_success"]);
         player.ChangeHonor(5);
-        cout << "Наверху замечают, что вы честно отстояли очередь.\n";
-        cout << "Ваша честь повышена на 5.\n Ведите себя добросовестно! Это повлияет на ваше будещее!\n";
-        waitForKeyEmpty();
-
     }
 
-    cout << "- Вы Харон?\n";
-    waitForKeyEmpty();
-
-    cout << "- Я, я, кто ж ещё...(Он говорит так, будто бы прямо сейчас уснет стоя)\n";
-    waitForKeyEmpty();
-
-    cout << "- У меня немного странная просьба...\n";
-    waitForKeyEmpty();
-
-    cout << "- Хм... Неужели что-то интересное. Я слушаю\n";
-    waitForKeyEmpty();
-
-    cout << "- У меня есть своего рода миссия и для её выполнения мне нужно попасть на второй круг. Вы можете помочь мне в этом?\n";
-    waitForKeyEmpty();
-
-    cout << "- Неужели... Я таких как ты не видел уже несколько десятков веков, если не больше. Я помогу тебе, только если ты поможешь мне.\n";
-    waitForKeyEmpty();
-
-    cout << "- Да, конечно я готов! Что нужно делать?\n";
-    waitForKeyEmpty();
-
-    cout << "- Ух, спасибо! Всё просто! Садишь этих в лодку, по одному, и плывешь на другой берег, там садишь других и везёшь сюда. Так раз 10 сделай. Я буду крайне благодарен и помогу тебе.\n";
-    waitForKeyEmpty();
-
-    cout << "- Хорошо!\n";
-    waitForKeyEmpty();
-
-    cout << "Вы садитесь в лодку, загружаете людей и плывёте на другой берег, считая поездки про себя...\n";
-    for (int i = 1; i <= 10; ++i) {
-        waitForKeyEmpty();
-        cout << "- " << i << "\n";
-    }
-
-    waitForKeyEmpty();
-    cout << "Закончив своё испытание и вернувшись обратно, вы видите как Харон крепко спит под ближайшим деревом...\n";
-    waitForKeyEmpty();
-
-    cout << "Вы его будите и сообщаете, что поручение выполнено.\n";
-    waitForKeyEmpty();
-
-    cout << "- Спасибо тебе, избранник! Я как заново умер! Ха-ха-ха! Не обращай внимания, профессиональный юмор...\n";
-    waitForKeyEmpty();
-
-    cout << "- Садись в лодку и поехали\n";
-    waitForKeyEmpty();
+    ClearScreen();
+    PrintDelay(circle_asset["charon_dialog"]);
 
     current_circle = 2;
     SetCheckpoint();
     Circle2();
+    return;
 }
 
-// Второй круг - Похоть
 void Circle2() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "        ВТОРОЙ КРУГ АДА - ПОХОТЬ        \n";
-    cout << "========================================\n\n";
-    cout << "Лодка Харона причаливает к берегу, где бушует вечная буря. Ветер кружит в бесконечном вихре "
-        "души тех, кто в жизни поддался плотским страстям. Среди них вы узнаёте образы знаменитых "
-        "любовников - Клеопатру, Елену Троянскую, Париса...\n\n"
-        "Страж круга - Минос, судья душ, обвивает хвостом вокруг себя, определяя глубину падения грешников.\n\n"
-        "Минос обращает на вас свой взор:\n"
-        "- Ещё одна душа для моего суда! Приготовься к вечному кружению в вихре страстей!\n\n"
-        "1. Попытаться убедить Миноса в своей невиновности\n"
-        "2. Приготовиться к бою\n"
-        "3. Попросить показать путь дальше\n";
+    if (!LoadCircleAsset("assets/circle2.json")) {
+        cerr << "Ошибка: не удалось загрузить circle2.json!" << endl;
+        return;
+    }
+    if (!LoadItemsAsset("assets/items.json")) {
+        cerr << "Failed to load items.json!" << endl;
+        return;
+    }
+    if (!Combat::LoadData("assets/combat_system.json", "assets/enemies.json")) {
+        cerr << "Ошибка загрузки боевых данных!" << endl;
+        return;
+    }
+
+    ClearScreen();
+    PrintArray(circle_asset["title"]);
+
+    PrintArray(circle_asset["description"]);
+
+    WaitKey();
+    ClearScreen();
+
+    PrintArray(circle_asset["minos_dialog"]);
 
     int choice;
     cin >> choice;
 
     if (choice == 1) {
-        cout << "\n- Я здесь не по своей воле! Мне нужно попасть к Люциферу!\n";
-        waitForKeyEmpty();
-        cout << "Минос смеётся:\n- Все так говорят! Но ты действительно... особенный случай.\n";
-        cout << "Он указывает на тропу вглубь круга:\n- Иди, но помни - дальше будет только хуже.\n";
-        waitForKeyEmpty();
-        cout << "Вы сказали правду и не вступили в бой! +10 чести.\n";
+        ClearScreen();
+        PrintDelay(circle_asset["convince_success"]);
         player.ChangeHonor(10);
-        waitForKeyEmpty();
     }
-    else if (choice == 3) {
-        cout << "\n- Умоляю, покажи мне путь! Я должен искупить свои грехи!\n";
-        waitForKeyEmpty();
-        if (player.GetHonor() > 60) {
-            cout << "Минос задумывается:\n- В тебе есть что-то... необычное. Проходи.\n";
-            cout << "Он указывает на тропу вглубь круга:\n- Иди, но помни - дальше будет только хуже.\n";
-            waitForKeyEmpty();
-            cout << "Вы сказали правду и не вступили в бой! +10 чести.\n";
+    if (choice == 2) {
+
+        bool result = Combat::StartBattle(player, "minos", circle_asset["win_minos"].get<string>());
+        if (result) {
+            WaitKey();
+            ClearScreen();
+        }
+    }
+    if(choice==3) {
+        if (player.honor() > 60) {
+            PrintDelay(circle_asset["request_success"]);
             player.ChangeHonor(5);
-            waitForKeyEmpty();
+            WaitKey();
         }
         else {
-            cout << "Минос хмурится:\n- Ты ещё не готов. Докажи свою решимость в бою!\n";
+            PrintArray(circle_asset["request_fail"]);
+            WaitKey();
             choice = 2;
         }
     }
-
-    if (choice == 2) {
-        Enemy minos("Минос", 60, 6, "Судья душ, определяющий круги ада для грешников", "Медленно поворачивается из-за тяжелой короны");
-        Combat(minos);
-        if (!player.IsAlive()) return;
-        cout << "Поражённый Минос указывает вам путь вниз:\n";
-        player.ChangeHonor(-10);
-        cout << "Вы убили! -10 чести.\n";
-        waitForKeyEmpty();
-    }
-
-    cout << "Спускаясь ниже, вы видите души, кружащиеся в вечном вихре. Одна из них отделяется и обращается к вам:\n"
-        "- Помоги мне! Я Франческа да Римини... Мы с Паоло полюбили друг друга, но были жестоко наказаны...\n\n"
-        "1. Выслушать её историю\n"
-        "2. Пройти мимо\n";
+    ClearScreen();
+    PrintArray(circle_asset["francesca_encounter"]);
 
     cin >> choice;
-    if (choice == 1) {
-        cout << "Франческа рассказывает трагическую историю своей любви со своим любовнике. Вы чувствуете, что её наказание слишком сурово.\n\n"
-            "1. Попытаться утешить её.\n"
-            "2. Сказать, что она получила по заслугам.\n";
 
+    if (choice == 1) {
+        PrintArray(circle_asset["francesca_story"]);
+        
         cin >> choice;
+
         if (choice == 1) {
             player.ChangeHonor(-10);
-            cout << "Вы решаете, что любовь не должна быть наказуема. Франческа благодарит вас.\n\n";
-            cout << "В целом вы были правы, однако небеса так не считают. -10 чести\n";
-            waitForKeyEmpty();
+            PrintArray(circle_asset["comfort_response"]);
         }
         else {
             player.ChangeHonor(5);
-            cout << "Вы напоминаете ей, что она нарушила священные узы брака. Франческа плачет, но соглашается с вами.\n\n";
-            cout << "Небеса довольны вами. +5 чести.\n";
-            waitForKeyEmpty();        }
+            cout << circle_asset["judge_response"].get<string>() << "\n";
+        }
     }
-    cout << "На неё резко падает вихрь и уносит её в даль!\n\n";
-    cout << "Когда ветер утихает на земле вы замечаете уже известные вам бутыльки.\n";
-    cout << "+Зелье лечения х2\n";
-    player.AddItem(Item("Зелье лечения", 50));
-    player.AddItem(Item("Зелье лечения", 50));
-    waitForKeyEmpty();
-
-    cout << "Вы идёте по вторму кругу, уворачиваясь от вихрей, которые летают повсюду\n";
-    waitForKeyEmpty();
-    cout << "Продвигаясь дальше, вы находите древний посох, лежащий среди развалин.\n";
-    cout << "1. Взять посох\n";
-    cout << "2. Оставить его\n";
-
-    cin >> choice;
-    if (choice == 1) {
-        cout << "Вы поднимаете Посох Странника. Он излучает слабую магическую энергию и наносит 8 урона.\n";
-        Weapon* staff = new Weapon("Посох Странника",8, "Эффективен против магических существ");
-        player.EquipWeapon(staff);
-        waitForKeyEmpty();
+    else {
+        cout << circle_asset["leave"].get<string>() << "\n";
     }
 
-    waitForKeyEmpty();
-    cout << "Вы подходите ко входу на треий круг!\n";
-    waitForKeyEmpty();
+    WaitKey();
+    
+    PrintDelay(circle_asset["francesca_end"]);
+
+    player.AddItem(Item(
+        items_asset["potions"]["healing_potion"]["name"].get<string>(),
+        items_asset["potions"]["healing_potion"]["value"].get<int>()
+    ));
+    player.AddItem(Item(
+        items_asset["potions"]["healing_potion"]["name"].get<string>(),
+        items_asset["potions"]["healing_potion"]["value"].get<int>()
+    ));
+
+    ClearScreen();
+    PrintDelay(circle_asset["circle_travel"]);
+
+    player.EquipWeapon(std::make_unique<Weapon>(
+        items_asset["weapons"]["wanderer_staff"]["name"].get<string>(),
+        items_asset["weapons"]["wanderer_staff"]["damage"].get<int>(),
+        items_asset["weapons"]["wanderer_staff"]["equip_text"].get<string>()
+    ));
+    WaitKey();
+
+    cout << circle_asset["circle_end"].get<string>();
+
+
     current_circle = 3;
-    SetCheckpoint(); // Установка контрольной точки после круга
+    SetCheckpoint();
     Circle3();
+    return;
 }
+
 void Circle3() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "     ТРЕТИЙ КРУГ АДА - ЧРЕВОУГОДИЕ      \n";
-    cout << "========================================\n\n";
-    cout << "Вы попадаете в отвратительное место, где с неба непрестанно льёт ледяной дождь, смешанный с градом. "
-        "Под ногами - зловонная грязь. В ней барахтаются тучные души, которых терзает трёхголовый пёс Цербер.\n\n"
-        "Цербер, почуяв ваш запах, бросается к вам, все три пасти слюнявят и рычат!\n"
-        "Вы замечаете, что средняя голова выглядит более агрессивной, чем остальные...\n\n";
-    waitForKeyEmpty();
-
-    Enemy cerberus("Цербер", 70, 10, "Трёхголовый пёс, страж чревоугодников", "Средняя голова более уязвима");
-    cout << "Прежде чем начать бой, вы понимаете, что предстоит не простая схватка.\n";
-    cout << "1. Вступить в бой сразу\n";
-    cout << "2. Осмотреться и подготовиться\n";
-
-    int pre_choice;
-    cin >> pre_choice;
-
-    if (pre_choice == 2) {
-        cout << "Вы осматриваете окружение, обнаруживая несколько возможностей:\n";
-        cout << "1. Использовать камень, лежащий рядом, как отвлекающий манёвр\n";
-        cout << "2. Попробовать атаковать уязвимое место, но это может быть рискованно\n";
-        int strategy_choice;
-        cin >> strategy_choice;
-
-        if (strategy_choice == 1) {
-            cout << "Вы бросаете камень в сторону, но Цербер этого не заметил.\n";
-        }
-        else {
-            cout << "Вы решаете рискнуть и атаковать уязвимое место, но вероятность успеха крайне низка.\n";
-        }
+    if (!LoadCircleAsset("assets/circle3.json")) {
+        cerr << "Ошибка: не удалось загрузить circle3.json!" << endl;
+        return;
+    }
+    if (!LoadItemsAsset("assets/items.json")) {
+        cerr << "Failed to load items.json!" << endl;
+        return;
+    }
+    if (!Combat::LoadData("assets/combat_system.json", "assets/enemies.json")) {
+        cerr << "Failed to load combat data!" << endl;
+        return;
     }
 
-    Combat(cerberus);
-    if (!player.IsAlive()) return;
+    ClearScreen();
+    PrintArray(circle_asset["title"]);
+    cout << circle_asset["description"].get<string>() << "\n\n";
+    WaitKey();
+
+    PrintArray(circle_asset["pre_choice"]);
 
     int choice;
-    cout << "После победы над Цербером вы находите среди костей окровавленный топор.\n";
-    cout << "1. Взять топор\n";
-    cout << "2. Оставить его\n";
-
     cin >> choice;
+
     if (choice == 1) {
-        cout << "Вы поднимаете Топор Мясника. Он тяжелый, но смертоносный.\n";
-        Weapon* axe = new Weapon("Топор Мясника", 10, "Наносит дополнительный урон тварям");
-        player.EquipWeapon(axe);
-        waitForKeyEmpty();
+        cout << circle_asset["lire_play"].get<string>() << "\n";
+        WaitKey();
+        cout << circle_asset["sleep_cerberus"].get<string>() << "\n";
+        }
+    else {
+        cout << circle_asset["meat_throw"].get<string>() << "\n";
+        WaitKey();
+
+        bool result = Combat::StartBattle(player, "cerberus", circle_asset["win_cerberus"].get<string>());
+        if (result) {
+            WaitKey();
+            ClearScreen();
+        }
     }
 
-    player.AddItem(Item("Зелье лечения", 50));
-    player.AddItem(Item("Зелье лечения", 50));
+    WaitKey();
+    player.EquipWeapon(std::make_unique<Weapon>(
+        items_asset["weapons"]["butcher_axe"]["name"].get<string>(),
+        items_asset["weapons"]["butcher_axe"]["damage"].get<int>(),
+        items_asset["weapons"]["butcher_axe"]["equip_text"].get<string>()
+    ));
+    WaitKey();
+    ClearScreen();
+    
+    PrintDelay(circle_asset["circle_travel"]);
 
-    cout << "Продвигаясь дальше, вы замечаете грешника, который пытается съесть собственную руку.\n"
-        "1. Попытаться помочь ему\n"
-        "2. Пройти мимо\n";
+    player.AddItem(Item(
+        items_asset["potions"]["healing_potion"]["name"].get<string>(),
+        items_asset["potions"]["healing_potion"]["value"].get<int>()
+    ));
+    player.AddItem(Item(
+        items_asset["potions"]["healing_potion"]["name"].get<string>(),
+        items_asset["potions"]["healing_potion"]["value"].get<int>()
+    ));
+    
+    PrintArray(circle_asset["sinner_encounter"]);
 
     cin >> choice;
+
     if (choice == 1) {
-        cout << "Вы пытаетесь остановить его, но понимаете, что не в силах помочь. Однако ваше сострадание не остаётся незамеченным.\n";
+        cout << circle_asset["help_sinner_text_yes"].get<string>();
+        player.ChangeHonor(-5);
+    }
+    else {
+        cout << circle_asset["help_sinner_text_no"].get<string>();
         player.ChangeHonor(5);
     }
-
-    waitForKeyEmpty();
+    WaitKey();
+    cout << circle_asset["circle_end"].get<string>();
 
     current_circle = 4;
     SetCheckpoint();
     Circle4();
+    return;
 }
 
-// Четвёртый круг - Жадность
 void Circle4() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "     ЧЕТВЁРТЫЙ КРУГ АДА - ЖАДНОСТЬ      \n";
-    cout << "========================================\n\n";
-    cout << "Вы спускаетесь в место, где две огромные толпы грешников толкают тяжелые груды богатств. "
-        "Одна группа кричит \"Зачем копил?\", другая - \"Зачем тратил?\". Они сталкиваются, "
-        "а затем расходятся, чтобы начать снова.\n\n"
-        "Над всем этим наблюдает Плутос, бог богатства, теперь демон жадности.\n\n"
-        "Плутос замечает вас и рычит:\n- Что привело тебя в мои владения? Ищешь богатства?\n\n"
-        "1. Сказать, что вам нужно пройти\n"
-        "2. Попросить немного золота\n"
-        "3. Напасть на него\n";
+    if (!LoadCircleAsset("assets/circle4.json")) {
+        cerr << "Ошибка: не удалось загрузить circle4.json!" << endl;
+        return;
+    }
+    if (!LoadItemsAsset("assets/items.json")) {
+        cerr << "Failed to load items.json!" << endl;
+        return;
+    }
+    if (!Combat::LoadData("assets/combat_system.json", "assets/enemies.json")){
+        cerr << "Failed to load combat data!" << endl;
+        return;
+    }
+
+    ClearScreen();
+    PrintArray(circle_asset["title"]);
+
+    cout << circle_asset["description"].get<string>() << "\n\n";
+
+    PrintArray(circle_asset["plutos_words"]);
 
     int choice;
     cin >> choice;
 
     if (choice == 2) {
-        cout << "Плутос смеётся и бросает вам горсть монет, которые превращаются в прах у вас в руках.\n"
-            "- Все богатства здесь - лишь тень! Как и в жизни!\n";
-        player.ChangeHonor(-10);
+
+        bool result = Combat::StartBattle(player, "plutus", circle_asset["win_plutus"].get<string>());
+        if (result) {
+            WaitKey();
+            ClearScreen();
+        }
     }
-
-    if (choice != 3) {
-        cout << "Плутос продолжает:\n- Чтобы пройти, ответь: что истинное богатство?\n\n"
-            "1. Золото и драгоценности\n"
-            "2. Духовные ценности\n"
-            "3. Время\n";
-
+    if (choice == 1) {
+        ClearScreen();
+        PrintDelay(circle_asset["plutos_dialog"]);
+        
+        PrintArray(circle_asset["plutos_question"]);
         cin >> choice;
-        if (choice == 2) {
-            cout << "- Верно! Но знаешь ли ты это на самом деле? Докажи!\n";
-            player.ChangeHonor(10);
+
+        if (choice == 1) {
+            PrintDelay(circle_asset["incorrect"]);
+            WaitKey();
+            choice = 2;
         }
         else {
-            cout << "- Ошибся! Теперь ты останешься здесь!\n";
-            player.ChangeHonor(-10);
-            choice = 3;
+            cout << circle_asset["correct"].get<string>();
+            WaitKey();
         }
     }
-
     if (choice == 3) {
-        Enemy plutus("Плутос", 80, 13, "Демон богатства, страж жадных и расточителей", "Медлителен из-за своего веса");
-        Combat(plutus);
-        if (!player.IsAlive()) return;
+        ClearScreen();
+        PrintDelay(circle_asset["becom_sinner"]);
     }
 
-    player.AddItem(Item("Зелье лечения", 50));
-    player.AddItem(Item("Зелье лечения", 50));
+    ClearScreen();
+    PrintDelay(circle_asset["circle_travel"]);
+    WaitKey();
 
-    cout << "После победы над Плутосом вы находите золотой кинжал.\n";
-    cout << "1. Взять кинжал\n";
-    cout << "2. Оставить его\n";
+    player.EquipWeapon(std::make_unique<Weapon>(
+        items_asset["weapons"]["golden_dagger"]["name"].get<string>(),
+        items_asset["weapons"]["golden_dagger"]["damage"].get<int>(),
+        items_asset["weapons"]["golden_dagger"]["equip_text"].get<string>()
+    ));
+    WaitKey();
 
-    cin >> choice;
-    if (choice == 1) {
-        cout << "Вы поднимаете Золотой кинжал. Он выглядит ценным, но хрупким.\n";
-        Weapon* golden_dagger = new Weapon("Золотой кинжал", 7, "Быстрый, но хрупкий");
-        player.EquipWeapon(golden_dagger);
-        waitForKeyEmpty();
-    }
+    player.AddItem(Item(
+        items_asset["potions"]["healing_potion"]["name"].get<string>(),
+        items_asset["potions"]["healing_potion"]["value"].get<int>()
+    ));
+    player.AddItem(Item(
+        items_asset["potions"]["healing_potion"]["name"].get<string>(),
+        items_asset["potions"]["healing_potion"]["value"].get<int>()
+    ));
 
-    waitForKeyEmpty();
-
+    WaitKey();
+    cout << circle_asset["circle_end"].get<string>();
+  
     current_circle = 5;
     SetCheckpoint();
     Circle5();
+    return;
 }
 
-// Пятый круг - Гнев
 void Circle5() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "         ПЯТЫЙ КРУГ АДА - ГНЕВ         \n";
-    cout << "========================================\n\n";
-    cout << "Вы подходите к мрачным водам реки Стикс. В грязной воде барахтаются гневные души, "
-        "а на поверхности плавают унылые, погружённые в вечную тоску.\n\n"
-        "Лодочник Флегий, перевозчик этого круга, кричит вам:\n"
-        "- Ещё один злой дух? Садись в лодку, быстро!\n\n"
-        "1. Сесть в лодку\n"
-        "2. Отказаться\n";
+    if (!LoadCircleAsset("assets/circle5.json")) {
+        cerr << "Ошибка: не удалось загрузить circle5.json!" << endl;
+        return;
+    }
+    if (!LoadItemsAsset("assets/items.json")) {
+        cerr << "Failed to load items.json!" << endl;
+        return;
+    }
+    if (!Combat::LoadData("assets/combat_system.json", "assets/enemies.json")) {
+        cerr << "Failed to load combat data!" << endl;
+        return;
+    }
 
+    ClearScreen();
+    PrintArray(circle_asset["title"]);
+    cout << circle_asset["description"].get<string>() << "\n\n";
+
+    PrintArray(circle_asset["phlegyas_intro"]);
+    
     int choice;
     cin >> choice;
 
     if (choice == 2) {
-        cout << "Флегий впадает в ярость и нападает на вас!\n";
-        Enemy phlegyas("Флегий", 90, 9, "Лодочник Стикса, царь лапифов, сжёгший храм Аполлона", "Слеп на один глаз");
-        Combat(phlegyas);
-        if (!player.IsAlive()) return;
-        cout << "Побеждённый Флегий с неохотой соглашается перевезти вас.\n";
+        PrintDelay(circle_asset["refuse_boat"]);
+
+        bool result = Combat::StartBattle(player, "phlegyas", circle_asset["win_phlegyas"].get<string>());
+        if (result) {
+            WaitKey();
+            ClearScreen();
+        }
+
+        player.EquipWeapon(std::make_unique<Weapon>(
+            items_asset["weapons"]["silver_sword"]["name"].get<string>(),
+            items_asset["weapons"]["silver_sword"]["damage"].get<int>(),
+            items_asset["weapons"]["silver_sword"]["equip_text"].get<string>()
+        ));
+
+        WaitKey();
     }
+    else    {
+        ClearScreen();
+        PrintArray(circle_asset["sit_boat"]);
+        
+        cin >> choice;
 
-    cout << "Переплывая Стикс, вы слышите, как души в воде шепчут проклятия. Одна из них хватает вашу лодку!\n\n"
-        "1. Ударить её\n"
-        "2. Попытаться успокоить\n";
+        if (choice == 1) {
+            PrintDelay(circle_asset["explain_mission"]);
+            player.ChangeHonor(10);
 
+            player.EquipWeapon(std::make_unique<Weapon>(
+                items_asset["weapons"]["silver_sword"]["name"].get<string>(),
+                items_asset["weapons"]["silver_sword"]["damage"].get<int>(),
+                items_asset["weapons"]["silver_sword"]["equip_text"].get<string>()
+            ));
+            
+            player.AddItem(Item(
+                items_asset["potions"]["healing_potion"]["name"].get<string>(),
+                items_asset["potions"]["healing_potion"]["value"].get<int>()
+            ));
+            player.AddItem(Item(
+                items_asset["potions"]["healing_potion"]["name"].get<string>(),
+                items_asset["potions"]["healing_potion"]["value"].get<int>()
+            ));
+            WaitKey();
+        }
+        else {
+            bool result = Combat::StartBattle(player, "phlegyas", circle_asset["win_phlegyas"].get<string>());
+            if (result) {
+                WaitKey();
+                ClearScreen();
+            }
+
+            player.EquipWeapon(std::make_unique<Weapon>(
+                items_asset["weapons"]["silver_sword"]["name"].get<string>(),
+                items_asset["weapons"]["silver_sword"]["damage"].get<int>(),
+                items_asset["weapons"]["silver_sword"]["equip_text"].get<string>()
+            ));
+           
+            player.AddItem(Item(
+                items_asset["potions"]["healing_potion"]["name"].get<string>(),
+                items_asset["potions"]["healing_potion"]["value"].get<int>()
+            ));
+            player.AddItem(Item(
+                items_asset["potions"]["healing_potion"]["name"].get<string>(),
+                items_asset["potions"]["healing_potion"]["value"].get<int>()
+            ));
+            WaitKey();
+
+        }
+        
+    }
+    ClearScreen();
+    PrintArray(circle_asset["stix_spirit_encounter"]);
+    
     cin >> choice;
+
     if (choice == 1) {
-        cout << "Вы в гневе бьёте дух, и он отпускает лодку. Но чувствуете, как гнев наполняет и вас.\n";
-        player.ChangeHonor(-5);
-    }
-    else {
-        cout << "Вы находите в себе силы сохранить спокойствие. Дух, удивлённый, отпускает лодку.\n";
+        PrintDelay(circle_asset["hit_spirit"]);
         player.ChangeHonor(5);
     }
+    else {
+        PrintDelay(circle_asset["calm_spirit"]);
+        player.ChangeHonor(-5);
+    }
 
-    cout << "На другом берегу вас встречает город Дит, окружённый огненными стенами. У ворот стоят Падшие ангелы.\n\n"
-        "- Никто не проходит в нижний ад без разрешения! - кричит один из них.\n\n"
-        "1. Попытаться договориться\n"
-        "2. Приготовиться к бою\n";
-
+    PrintArray(circle_asset["fallen_angel_encounter"]);
+   
     cin >> choice;
-    if (choice == 1 && player.GetHonor() > 70) {
-        cout << "Ангелы, видя вашу решимость и чистоту намерений, пропускают вас.\n";
-        player.ChangeHonor(10);
+
+    if (choice == 1) {
+        PrintDelay(circle_asset["use_silver"]);
+        player.ChangeHonor(-10);
     }
     else {
-        Enemy fallen_angel("Падший ангел", 100, 16, "Бывший служитель небес, теперь страж нижнего ада", "Уязвим к серебру");
-        Combat(fallen_angel);
-        if (!player.IsAlive()) return;
+        PrintDelay(circle_asset["convince_angel"]);
+        player.ChangeHonor(10);
     }
 
-    player.AddItem(Item("Зелье лечения", 50));
-    player.AddItem(Item("Зелье лечения", 50));
-
-    cout << "После прохода через ворота вы находите серебряный меч.\n";
-    cout << "1. Взять меч\n";
-    cout << "2. Оставить его\n";
-
-    cin >> choice;
-    if (choice == 1) {
-        cout << "Вы поднимаете Серебряный клинок. Он холоден на ощупь и светится слабым светом.\n";
-        Weapon* silver_sword = new Weapon("Серебряный клинок", 9, "Эффективен против нежити и демонов");
-        player.EquipWeapon(silver_sword);
-        waitForKeyEmpty();
-    }
-
-    waitForKeyEmpty();
+    cout << circle_asset["circle_end"].get<string>();
 
     current_circle = 6;
     SetCheckpoint();
     Circle6();
+    return;
 }
 
-// Шестой круг - Ересь
 void Circle6() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "        ШЕСТОЙ КРУГ АДА - ЕРЕСЬ        \n";
-    cout << "========================================\n\n";
-    cout << "Вы входите в мрачный город Дит, где в открытых огненных гробницах мучаются еретики.\n\n"
-        "Среди них вы узнаёте известных философов и религиозных лидеров, отрицавших бессмертие души.\n\n"
-        "К вам подходит Фарината дельи Уберти, знатный флорентиец:\n"
-        "- Новый гость? Ты выглядишь живым... Что привело тебя в наш скорбный дом?\n\n"
-        "1. Сказать, что вы ищете путь к Люциферу\n"
-        "2. Спросить, за что он наказан\n";
+    if (!LoadCircleAsset("assets/circle6.json")) {
+        cerr << "Ошибка: не удалось загрузить circle6.json!" << endl;
+        return;
+    }
+    if (!LoadItemsAsset("assets/items.json")) {
+        cerr << "Failed to load items.json!" << endl;
+        return;
+    }
+    if (!Combat::LoadData("assets/combat_system.json", "assets/enemies.json")) {
+        cerr << "Failed to load combat data!" << endl;
+        return;
+    }
+    ClearScreen();
+    PrintArray(circle_asset["title"]);
+    cout << circle_asset["description"].get<string>() << "\n\n";
+    WaitKey();
+
+    PrintArray(circle_asset["farinata_dialog"]);
 
     int choice;
     cin >> choice;
 
     if (choice == 1) {
-        cout << "Фарината удивлён:\n- Смелое заявление! Может, ты и правда особенный...\n";
+       PrintDelay(circle_asset["tell_truth"]);
     }
     else {
-        cout << "Фарината гордо отвечает:\n- Я верил, что душа умирает с телом. Теперь я знаю, как ошибался.\n";
+        PrintDelay(circle_asset["ask_sin"]);
     }
 
-    cout << "Внезапно из огненной гробницы появляется тень Эпикура:\n"
-        "- Не слушай его! Наслаждение - единственная истина!\n\n"
-        "1. Вступить в дискуссию с философами\n"
-        "2. Пройти мимо\n";
-
+    PrintDelay(circle_asset["epicure_shadow"]);
+    
     cin >> choice;
+
     if (choice == 1) {
-        cout << "Вы ведёте долгую беседу о природе души. В конце Фарината, впечатлённый, указывает вам путь:\n"
-            "- Спускайся через расщелину у третьей гробницы. Там ты найдёшь путь вниз.\n";
-        player.ChangeHonor(15);
+        cout << circle_asset["agree_shadow"].get<string>() << "\n";
+        player.ChangeHonor(-10);
     }
     else {
-        cout << "Блуждая по городу, вы натыкаетесь на трёх Фурий, стражей этого круга:\n"
-            "- Живой среди мёртвых! Тебе не место здесь!\n";
-        Enemy fury("Фурия", 110, 15, "Богиня мести, стражница круга еретиков", "Боится огня");
-        Combat(fury);
-        if (!player.IsAlive()) return;
+        PrintDelay(circle_asset["disagree_shadow"]);
+        player.ChangeHonor(5);
     }
-
-    player.AddItem(Item("Зелье лечения", 50));
-    player.AddItem(Item("Зелье лечения", 50));
-
-    cout << "В одной из гробниц вы находите пылающий меч.\n";
-    cout << "1. Взять меч\n";
-    cout << "2. Оставить его\n";
-
+    ClearScreen();
+    PrintArray(circle_asset["fury_encounter"]);
+    
     cin >> choice;
-    if (choice == 1) {
-        cout << "Вы поднимаете Пылающий клинок. Он обжигает вашу руку, но вы держите его.\n";
-        Weapon* flaming_sword = new Weapon("Пылающий клинок", 12, "Наносит дополнительный огненный урон");
-        player.EquipWeapon(flaming_sword);
-        waitForKeyEmpty();
-    }
 
-    waitForKeyEmpty();
+    if (choice == 1) {
+
+        player.EquipWeapon(std::make_unique<Weapon>(
+            items_asset["weapons"]["flaming_sword"]["name"].get<string>(),
+            items_asset["weapons"]["flaming_sword"]["damage"].get<int>(),
+            items_asset["weapons"]["flaming_sword"]["equip_text"].get<string>()
+        ));
+
+        WaitKey();
+        PrintArray(circle_asset["take_fire"]);
+        
+        cin >> choice;
+
+        if (choice == 1) {
+            PrintDelay(circle_asset["fire_omit"]);
+            player.ChangeHonor(5);
+
+            player.AddItem(Item(
+                items_asset["potions"]["healing_potion"]["name"].get<string>(),
+                items_asset["potions"]["healing_potion"]["value"].get<int>()
+            ));
+            player.AddItem(Item(
+                items_asset["potions"]["healing_potion"]["name"].get<string>(),
+                items_asset["potions"]["healing_potion"]["value"].get<int>()
+            ));
+        }
+        else{
+            PrintDelay(circle_asset["scare"]);
+            player.ChangeHonor(-10);
+        }
+    }
+    if(choice==2) {
+        bool result = Combat::StartBattle(player, "fury", circle_asset["win_fury"].get<string>());
+        if (result) {
+            WaitKey();
+            ClearScreen();
+        }
+    }
+    else {
+        PrintDelay(circle_asset["convince_fury"]);
+        choice = 2;
+    }
+    
+    cout << circle_asset["circle_end"].get<string>();
 
     current_circle = 7;
     SetCheckpoint();
     Circle7();
+    return;
 }
 
-// Седьмой круг - Насилие
 void Circle7() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "       СЕДЬМОЙ КРУГ АДА - НАСИЛИЕ      \n";
-    cout << "========================================\n\n";
-    cout << "Седьмой круг разделён на три пояса:\n\n"
-        "Первый пояс - насильники против ближних. Они варятся в кипящей крови, "
-        "а кентавры стреляют в тех, кто пытается выбраться.\n\n"
-        "Вы видите, как в реке крови мучаются известные тираны и убийцы.\n\n"
-        "Кентавр Несс приближается к вам:\n"
-        "- Ты не похож на грешника этого круга. Что тебе нужно?\n\n"
-        "1. Попросить провести вас через пояс\n"
-        "2. Попытаться пройти самостоятельно\n";
+    if (!LoadCircleAsset("assets/circle7.json")) {
+        cerr << "Ошибка: не удалось загрузить circle7.json!" << endl;
+        return;
+    }
+    if (!LoadItemsAsset("assets/items.json")) {
+        cerr << "Failed to load items.json!" << endl;
+        return;
+    }
+    if (!Combat::LoadData("assets/combat_system.json", "assets/enemies.json")) {
+        cerr << "Failed to load combat data!" << endl;
+        return;
+    }
+    ClearScreen();
+    PrintArray(circle_asset["title"]);
+    cout << circle_asset["description"].get<string>() << "\n\n";
 
+    PrintArray(circle_asset["first_belt_intro"]);
+   
     int choice;
     cin >> choice;
 
     if (choice == 1) {
-        if (player.GetHonor() > 50) {
-            cout << "Несс, видя ваши чистые намерения, соглашается помочь:\n"
-                "- Иди за мной, но не отставай!\n";
-            player.ChangeHonor(5);
-        }
-        else {
-            cout << "Несс хмурится:\n- Ты пахнешь насилием. Докажи, что достоин пройти!\n";
-            choice = 2;
-        }
+        PrintDelay(circle_asset["pay_success"]);
+        player.ChangeHonor(-10);
     }
-
     if (choice == 2) {
-        cout << "Вы пытаетесь пересечь пояс самостоятельно, но другие кентавры замечают вас!\n";
-        Enemy centaur("Кентавр", 120, 15, "Получеловек-полуконь, страж насильников", "Уязвим в спину");
-        Combat(centaur);
-        if (!player.IsAlive()) return;
-    }
-
-    cout << "Второй пояс - насильники против себя. Здесь в страшном лесу мучаются самоубийцы, "
-        "превращённые в деревья, которые рвут гарпии.\n\n"
-        "Вы слышите стоны, доносящиеся из деревьев. Одно из них обращается к вам:\n"
-        "- Помоги мне! Я Пьер делла Винья, советник императора... Я покончил с собой, "
-        "когда меня несправедливо обвинили...\n\n"
-        "1. Попытаться помочь ему\n"
-        "2. Пройти мимо\n";
-
-    cin >> choice;
-    if (choice == 1) {
-        cout << "Вы пытаетесь остановить его, но понимаете, что не в силах помочь. Однако ваше сострадание не остаётся незамеченным.\n";
-        player.ChangeHonor(10);
-    }
-
-    cout << "Третий пояс - насильники против Бога и природы. Они лежат на раскалённом песке "
-        "под огненным дождём.\n\n"
-        "Среди них вы узнаёте знаменитых богохульников. Вдалеке виден Минотавр, "
-        "но он не замечает вас.\n\n"
-        "1. Попытаться пройти незамеченным\n"
-        "2. Быстро пробежать\n";
-
-    cin >> choice;
-    if (choice == 1 && player.GetHonor() > 60) {
-        cout << "Вам удаётся пройти незамеченным!\n";
+        PrintDelay(circle_asset["wade_fail"]);
+        player.TakeDamage(30);
+        player.ChangeHonor(-5);
     }
     else {
-        cout << "Минотавр замечает вас и бросается в атаку!\n";
-        Enemy minotaur("Минотавр", 150, 40, "Чудовище с головой быка, страж насильников", "Слеп на один глаз");
-        Combat(minotaur);
-        if (!player.IsAlive()) return;
+        bool result = Combat::StartBattle(player, "nessus", circle_asset["win_nessus"].get<string>());
+        if (result) {
+            WaitKey();
+            ClearScreen();
+        }
     }
 
-    player.AddItem(Item("Зелье лечения", 50));
-    player.AddItem(Item("Зелье лечения", 50));
-
-    cout << "После прохода через пояс вы находите костяной меч.\n";
-    cout << "1. Взять меч\n";
-    cout << "2. Оставить его\n";
+    PrintArray(circle_asset["second_belt_intro"]);
 
     cin >> choice;
     if (choice == 1) {
-        cout << "Вы поднимаете Костяной клинок. Он странно лёгкий и прохладный на ощупь.\n";
-        Weapon* bone_sword = new Weapon("Костяной клинок", 11, "Эффективен против живых существ");
-        player.EquipWeapon(bone_sword);
-        waitForKeyEmpty();
+        PrintDelay(circle_asset["chop_tree"]);
+        player.ChangeHonor(-15);
+    }
+    if (choice == 2) {
+        PrintDelay(circle_asset["ignore"]);
+        player.ChangeHonor(5);
+    }
+    else {
+        PrintDelay(circle_asset["fight_harpies"]);
+        player.ChangeHonor(+10);
     }
 
-    waitForKeyEmpty();
+    PrintArray(circle_asset["third_belt_intro"]);
+    
+    cin >> choice;
+
+    if (choice == 3) {
+        bool result = Combat::StartBattle(player, "minotaur", circle_asset["win_minotaur"].get<string>());
+        if (result) {
+            WaitKey();
+            ClearScreen();
+        }
+
+        player.AddItem(Item(
+            items_asset["potions"]["healing_potion"]["name"].get<string>(),
+            items_asset["potions"]["healing_potion"]["value"].get<int>()
+        ));
+        player.AddItem(Item(
+            items_asset["potions"]["healing_potion"]["name"].get<string>(),
+            items_asset["potions"]["healing_potion"]["value"].get<int>()
+        ));
+        player.EquipWeapon(std::make_unique<Weapon>(
+            items_asset["weapons"]["bone_sword"]["name"].get<string>(),
+            items_asset["weapons"]["bone_sword"]["damage"].get<int>(),
+            items_asset["weapons"]["bone_sword"]["equip_text"].get<string>()
+        ));
+        
+        WaitKey();
+    }
+    if (choice == 1) {
+        PrintDelay(circle_asset["sneak_success"]);
+    }
+    if (choice == 2) {
+        PrintDelay(circle_asset["sneak_fail"]);
+        choice = 3;
+    }
+
+    cout << circle_asset["circle_end"].get<string>();
 
     current_circle = 8;
     SetCheckpoint();
     Circle8();
+    return;
 }
 
-// Восьмой круг - Обман
 void Circle8() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "        ВОСЬМОЙ КРУГ АДА - ОБМАН       \n";
-    cout << "========================================\n\n";
-    cout << "Вы попадаете в место, называемое Злыми Щелями - это 10 концентрических рвов, "
-        "где мучаются разные виды обманщиков.\n\n"
-        "Страж круга - великан Герион, существо с лицом человека, телом змеи и лапами льва.\n\n"
-        "Герион приближается к вам:\n"
-        "- Никто не проходит через мои владения без оплаты. Что ты предложишь?\n\n"
-        "1. Предложить свою честь\n"
-        "2. Отказаться платить\n"
-        "3. Попытаться обмануть его\n";
+    if (!LoadCircleAsset("assets/circle8.json")) {
+        cerr << "Ошибка: не удалось загрузить circle8.json!" << endl;
+        return;
+    }
+    if (!LoadItemsAsset("assets/items.json")) {
+        cerr << "Failed to load items.json!" << endl;
+        return;
+    }
+    if (!Combat::LoadData("assets/combat_system.json", "assets/enemies.json")) {
+        cerr << "Failed to load combat data!" << endl;
+        return;
+    }
+    ClearScreen();
+    PrintArray(circle_asset["title"]);
+    cout << circle_asset["description"].get<string>() << "\n\n";
+
+    PrintArray(circle_asset["gerion_encounter"]);
 
     int choice;
     cin >> choice;
 
     if (choice == 1) {
-        cout << "Герион смеётся:\n- Честь? Здесь? Ты шутишь! Но... мне интересно.\n";
+        PrintDelay(circle_asset["offer_honor"]);
         player.ChangeHonor(-20);
-        cout << "Герион берёт часть вашей чести и позволяет пройти.\n";
     }
-    else if (choice == 3) {
-        if (rand() % 100 < 30) {
-            cout << "Вам удаётся обмануть Гериона! Он пропускает вас, думая, что вы один из демонов.\n";
-            player.ChangeHonor(-15);
-        }
-        else {
-            cout << "Герион разгадывает ваш обман и впадает в ярость!\n";
-            choice = 2;
-        }
-    }
-
     if (choice == 2) {
-        Enemy gerion("Герион", 180, 15, "Великан-обманщик, страж восьмого круга", "Уязвим в живот");
-        Combat(gerion);
-        if (!player.IsAlive()) return;
+        PrintDelay(circle_asset["refuse_pay"]);
+
+        bool result = Combat::StartBattle(player, "gerion", circle_asset["win_gerion"].get<string>());
+        if (result) {
+            WaitKey();
+            ClearScreen();
+        }
+       
+        player.EquipWeapon(std::make_unique<Weapon>(
+            items_asset["weapons"]["poisoned_dagger"]["name"].get<string>(),
+            items_asset["weapons"]["poisoned_dagger"]["damage"].get<int>(),
+            items_asset["weapons"]["poisoned_dagger"]["equip_text"].get<string>()
+        ));
+       
+        WaitKey();
+    }
+    if (choice == 3) {
+        PrintDelay(circle_asset["trick_gerion"]);
+        player.ChangeHonor(-15);
+
+        bool result = Combat::StartBattle(player, "gerion", circle_asset["win_gerion"].get<string>());
+        if (result) {
+            WaitKey();
+            ClearScreen();
+        }
+
+        player.EquipWeapon(std::make_unique<Weapon>(
+            items_asset["weapons"]["poisoned_dagger"]["name"].get<string>(),
+            items_asset["weapons"]["poisoned_dagger"]["damage"].get<int>(),
+            items_asset["weapons"]["poisoned_dagger"]["equip_text"].get<string>()
+        ));
+        
+        WaitKey();
     }
 
-    cout << "Проходя через рвы, вы видите ужасные наказания для разных обманщиков:\n"
-        "- Сводники и соблазнители, бичуемые демонами\n"
-        "- Льстецы, погружённые в нечистоты\n"
-        "- Прорицатели, с вывернутыми головами\n"
-        "- Мздоимцы, кипящие в смоле\n\n"
-        "В одном из рвов вы узнаёте знакомого - это бывший коллега, который обманул вас много лет назад.\n\n"
-        "1. Попытаться поговорить с ним\n"
-        "2. Пройти мимо\n";
+    PrintArray(circle_asset["encounter_sinners"]);
 
     cin >> choice;
-    if (choice == 1) {
-        cout << "Он умоляет о прощении. Что вы сделаете?\n"
-            "1. Простить его (получить 20 чести)\n"
-            "2. Оставить его страдать (потерять 10 чести)\n";
 
-        cin >> choice;
-        if (choice == 1) {
-            cout << "Вы находите в себе силы простить его. Небеса замечают ваш поступок.\n";
-            player.ChangeHonor(20);
-        }
-        else {
-            cout << "Вы отворачиваетесь, чувствуя, как темнеет ваша душа.\n";
-            player.ChangeHonor(-10);
-        }
+    if (choice == 1) {
+        PrintDelay(circle_asset["forgive"]);
+        player.ChangeHonor(20);
+    }
+    else    {
+        PrintDelay(circle_asset["condemn"]);
+        player.ChangeHonor(-10);
+
     }
 
-    player.AddItem(Item("Зелье лечения", 50));
-    player.AddItem(Item("Зелье лечения", 50));
-
-    cout << "В последнем рву вы находите кинжал с ядовитым клинком.\n";
-    cout << "1. Взять кинжал\n";
-    cout << "2. Оставить его\n";
-
-    cin >> choice;
-    if (choice == 1) {
-        cout << "Вы поднимаете Ядовитый клинок. Он покрыт странной слизью.\n";
-        Weapon* poisoned_dagger = new Weapon("Ядовитый клинок", 8, "Наносит дополнительный урон от яда");
-        player.EquipWeapon(poisoned_dagger);
-        waitForKeyEmpty();
-    }
-
-    waitForKeyEmpty();
+    cout << circle_asset["circle_end"].get<string>();
 
     current_circle = 9;
     SetCheckpoint();
     Circle9();
+    return;
 }
 
-// Девятый круг - Предательство
 void Circle9() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "     ДЕВЯТЫЙ КРУГ АДА - ПРЕДАТЕЛЬСТВО  \n";
-    cout << "========================================\n\n";
-    cout << "Вы спускаетесь в ледяное озеро Коцит. Здесь, вмёрзшие в лёд по разную глубину, "
-        "мучаются предатели. В центре озера - сам Люцифер, вмёрзший по пояс, "
-        "вечно жующий в своих трёх пастях Иуду, Брута и Кассия.\n\n"
-        "Ледяной ветер пронизывает вас до костей. Вдруг вы слышите голос:\n"
-        "- Кто осмелился потревожить покой последнего круга?\n"
-        "Это граф Уголино, предавший свою родину, теперь вечно грызущий голову своего "
-        "сообщника архиепископа Руджери.\n\n"
-        "1. Попросить указать путь к Люциферу\n"
-        "2. Пройти мимо\n";
-
-    int choice;
-    cin >> choice;
-
-    if (choice == 1) {
-        cout << "Уголино прекращает своё занятие на мгновение:\n"
-            "- Иди на север... Но зачем тебе к нему? Он никому не помогает.\n";
+    if (!LoadCircleAsset("assets/circle9.json")) {
+        cerr << "Ошибка: не удалось загрузить circle9.json!" << endl;
+        return;
     }
-
-    cout << "Продвигаясь по льду, вы видите других известных предателей. Вдруг перед вами "
-        "появляются гигантские фигуры - это Антей и другие великаны, стражники этого круга.\n\n"
-        "Антей наклоняется к вам:\n"
-        "- Маленький человечек... Как ты дошёл до сюда?\n\n"
-        "1. Попросить перенести вас к Люциферу\n"
-        "2. Попытаться пройти незамеченным\n"
-        "3. Приготовиться к бою\n";
-
-    cin >> choice;
-
-    if (choice == 1) {
-        cout << "Антей смеётся:\n- Ты смел, я дам тебе это! Но сначала ответь: зачем тебе к Владыке?\n\n"
-            "1. Чтобы выбраться из ада\n"
-            "2. Чтобы служить ему\n"
-            "3. Чтобы победить его\n";
-
-        cin >> choice;
-        if (choice == 3) {
-            cout << "Антей громко смеётся и берёт вас в ладонь:\n"
-                "- Ха! Такого я ещё не видел! Посмотрим, что скажет Владыка!\n";
-            player.ChangeHonor(10);
-        }
-        else if (choice == 2) {
-            cout << "Антей хмурится:\n- Все хотят служить... Но посмотрим, что скажет Владыка.\n";
-            player.ChangeHonor(-10);
-        }
-        else {
-            cout << "Антей задумывается:\n- Никто ещё не выбирался... Но ты особенный. Хорошо.\n";
-        }
+    if (!LoadItemsAsset("assets/items.json")) {
+        cerr << "Failed to load items.json!" << endl;
+        return;
     }
-    else if (choice == 2 && player.GetHonor() > 80) {
-        cout << "Вам удаётся пройти незамеченным!\n";
-    }
-    else {
-        cout << "Антей замечает вас и бросается в атаку!\n";
-        Enemy anteus("Антей", 200, 18, "Великан, сын Земли, страж предателей", "Медлителен из-за размеров");
-        Combat(anteus);
-        if (!player.IsAlive()) return;
-    }
-
-    player.AddItem(Item("Зелье лечения", 50));
-    player.AddItem(Item("Зелье лечения", 50));
-
-    cout << "Перед финальной битвой вы находите ледяной меч.\n";
-    cout << "1. Взять меч\n";
-    cout << "2. Оставить его\n";
-
-    cin >> choice;
-    if (choice == 1) {
-        cout << "Вы поднимаете Ледяной клинок. От него исходит морозный воздух.\n";
-        Weapon* ice_sword = new Weapon("Ледяной клинок", 15, "Может заморозить противника");
-        player.EquipWeapon(ice_sword);
-        waitForKeyEmpty();
-    }
-
-    SetCheckpoint();
-    FinalBattle();
-}
-void FinalBattle() {
-    clearScreen();
-    cout << "Вы стоите перед троном Люцифера. Владыка Ада наблюдает за вами с холодным интересом.\n\n"
-        << "- Так вот ты какой, избранник... Прошёл все круги, чтобы предстать передо мной. Что же ты хочешь?\n\n"
-        << "1. Я хочу выбраться отсюда!\n"
-        << "2. Я пришёл служить тебе\n"
-        << "3. Я хочу искупить свои грехи\n";
-
-    int choice;
-    cin >> choice;
-
-    switch (choice) {
-    case 1:
-        if (player.GetHonor() >= 70) {
-            cout << "Люцифер задумчиво смотрит на вас: - Ты доказал, что достоин второго шанса. Иди...\n";
-        }
-        else {
-            cout << "Люцифер смеётся: - Ты думал, что сможешь просто уйти? Оставайся здесь навеки!\n";
-        }
-        break;
-    case 2:
-        cout << "Люцифер улыбается: - Хороший выбор. Отныне ты будешь служить мне.\n";
-        break;
-    case 3:
-        if (player.GetHonor() >= 80) {
-            cout << "Люцифер кивает: - Твоё раскаяние искренне. Ты свободен.\n";
-        }
-        else {
-            cout << "Люцифер хмурится: - Слишком поздно для раскаяния. Ты останешься здесь.\n";
-        }
-        break;
-    default:
-        FinalBattle(); // Повторный вызов при неправильном выборе
+    if (!Combat::LoadData("assets/combat_system.json", "assets/enemies.json")) {
+        cerr << "Failed to load combat data!" << endl;
         return;
     }
 
-    waitForKeyEmpty();
+    ClearScreen();
+    PrintArray(circle_asset["title"]);
+
+    cout << circle_asset["description"].get<string>() << "\n\n";
+    PrintArray(circle_asset["ugolino_intro"]);
+
+    int choice;
+    cin >> choice;
+
+    if (choice == 1) {
+        PrintDelay(circle_asset["ask_path"]);
+        player.EquipWeapon(std::make_unique<Weapon>(
+            items_asset["weapons"]["ice_sword"]["name"].get<string>(),
+            items_asset["weapons"]["ice_sword"]["damage"].get<int>(),
+            items_asset["weapons"]["ice_sword"]["equip_text"].get<string>()
+        ));
+        
+        WaitKey();
+    }
+    if (choice == 2) {
+        PrintDelay(circle_asset["ask_path"]);
+
+        player.EquipWeapon(std::make_unique<Weapon>(
+            items_asset["weapons"]["ice_sword"]["name"].get<string>(),
+            items_asset["weapons"]["ice_sword"]["damage"].get<int>(),
+            items_asset["weapons"]["ice_sword"]["equip_text"].get<string>()
+        ));
+        WaitKey();
+    }
+    else {
+        PrintArray(circle_asset["anteus_encounter"]);
+
+        bool result = Combat::StartBattle(player, "anteus", circle_asset["win_anteus"].get<string>());
+        if (result) {
+            WaitKey();
+            ClearScreen();
+        }
+    }
+    player.EquipWeapon(std::make_unique<Weapon>(
+        items_asset["weapons"]["ice_sword"]["name"].get<string>(),
+        items_asset["weapons"]["ice_sword"]["damage"].get<int>(),
+        items_asset["weapons"]["ice_sword"]["equip_text"].get<string>()
+    ));
+    WaitKey();
+
+   
+    ClearScreen();
+    PrintArray(circle_asset["lucifer_final"]);
+
+    cin >> choice;
+
+    if (choice == 1) {
+        cout << circle_asset["use_weapons"].get<string>()<<"\n";
+        WaitKey();
+        choice = 2;
+    }
+    if (choice == 2) {
+        PrintDelay(circle_asset["secons_chance"]);
+        if (player.honor() <= 50) {
+            PrintDelay(circle_asset["low_honor"]);
+        }
+        if (player.honor() > 50 and player.honor() <= 70) {
+            PrintDelay(circle_asset["medium_honor"]);
+        }
+        if (player.honor() > 70) {
+            PrintDelay(circle_asset["high_honor"]);
+        }
+    }
+
+    WaitKey();
     CheckEnding();
+    return;
 }
+
 void CheckEnding() {
-    clearScreen();
-    cout << "========================================\n";
-    cout << "            КОНЕЦ ИГРЫ                 \n";
-    cout << "========================================\n\n";
-
-    cout << "Ваш итоговый уровень чести: " << player.GetHonor() << "/100\n";
-
-    waitForKeyEmpty();
-    MainMenu();
+  ClearScreen();
+  if (!LoadCircleAsset("assets/ending.json")) {
+    cerr << "Ошибка загрузки финала!\n";
+    return;
+  }
+  
+  PrintArray(circle_asset["title"]);
+  cout << circle_asset["end_game"].get<string>() << "\n\n";
+  cout << circle_asset["honor_message"].get<string>() << player.honor() << "/100\n";
+  cout << circle_asset["return_menu"].get<string>() << "\n";
+  WaitKey();
+  MainMenu();
+  return;
 }

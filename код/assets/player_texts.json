@@ -1,0 +1,22 @@
+{
+  "inventory": {
+    "header": "=== ИНВЕНТАРЬ ===",
+    "health_label": "Здоровье: ",
+    "honor_label": "Честь: ",
+    "weapon_label": "Оружие: ",
+    "weapon_none": "Нет (Урон: 1)",
+    "damage_label": "Урон",
+    "items_label": "Предметы (",
+    "item_format": "{index}. {name} (+{value} HP)",
+    "choose_inventory_item": "Выберите предмет для использования: ",
+    "inventory_empty": "Инвентарь пуст!"
+  },
+  "errors": {
+    "no_items": "У вас нет предметов!",
+    "invalid_item_index": "Неверный индекс предмета!",
+    "inventory_full": "Инвентарь полон! Нельзя добавить:"
+  },
+  "messages": {
+    "used_healing_potion": "Вы использовали {item_name} и восстановили {value} здоровья!"
+  }
+}

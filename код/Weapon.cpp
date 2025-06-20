@@ -1,8 +1,16 @@
 #include "Weapon.h"
 
-Weapon::Weapon(const std::string& name, int damage, std::string weak_spot)
-    : name_(name), damage_(damage), weak_spot_(weak_spot) {}
+Weapon::Weapon(const std::string& name, int damage, const std::string& equip_text)
+    : name_(name), damage_(damage), equip_text_(equip_text) {}
 
-std::string Weapon::GetName() const { return name_; }
-int Weapon::GetDamage() const { return damage_; }
-std::string Weapon::GetWeakSpot() const { return weak_spot_; }
+const std::string& Weapon::get_name() const {
+    return name_;
+}
+
+int Weapon::get_damage() const {
+    return damage_;
+}
+
+const std::string& Weapon::get_equip_text() const {
+    return equip_text_;
+}

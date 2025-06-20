@@ -1,4 +1,3 @@
-#pragma once
 #ifndef WEAPON_H
 #define WEAPON_H
 
@@ -6,15 +5,16 @@
 
 class Weapon {
 public:
-    Weapon(const std::string& name, int damage, std::string weak_spot = "");
-    std::string GetName() const;
-    int GetDamage() const;
-    std::string GetWeakSpot() const;
+	Weapon(const std::string& name, int damage, const std::string& equip_text);
+
+	const std::string& get_name() const;
+	int get_damage() const;
+	const std::string& get_equip_text() const;
 
 private:
-    std::string name_;
-    int damage_;
-    std::string weak_spot_;
+	std::string name_;
+	int damage_;
+	std::string equip_text_;
 };
 
-#endif // WEAPON_H
+#endif  // WEAPON_H

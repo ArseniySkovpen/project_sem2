@@ -1,0 +1,76 @@
+{
+  "enemies": {
+    "minos": {
+      "name": "Минос",
+      "health": 60,
+      "damage": 6,
+      "description": "Судья душ, определяющий круги ада для грешников",
+      "weak_spot": "Медленно поворачивается из-за тяжелой короны",
+      "circle": 2
+    },
+    "cerberus": {
+      "name": "Цербер",
+      "health": 70,
+      "damage": 10,
+      "description": "Трехголовый пес, страж третьего круга",
+      "weak_spot": "Глаза",
+      "circle": 3
+    },
+    "plutus": {
+      "name": "Плутос",
+      "health": 80,
+      "damage": 13,
+      "description": "Бог богатства, страж скупых",
+      "weak_spot": "Кошель",
+      "circle": 4
+    },
+    "phlegyas": {
+      "name": "Флегий",
+      "health": 90,
+      "damage": 9,
+      "description": "Лодочник Стикса, царь лапифов",
+      "weak_spot": "Слеп на один глаз",
+      "circle": 5
+    },
+    "fury": {
+      "name": "Фурия",
+      "health": 110,
+      "damage": 15,
+      "description": "Богиня мести, стражница еретиков",
+      "weak_spot": "Боится огня",
+      "circle": 6
+    },
+    "minotaur": {
+      "name": "Минотавр",
+      "health": 150,
+      "damage": 40,
+      "description": "Чудовище с головой быка, страж насильников",
+      "weak_spot": "Слеп на один глаз",
+      "circle": 7
+    },
+    "nessus": {
+      "name": "Несс",
+      "health": 100,
+      "damage": 15,
+      "description": "Существо тело которого поделено на две половины: верх-человеческая , а низ - конская",
+      "weak_spot": "Человеческая половина тела",
+      "circle": 7
+    },
+    "gerion": {
+      "name": "Герион",
+      "health": 180,
+      "damage": 15,
+      "description": "Великан-обманщик, страж восьмого круга",
+      "weak_spot": "Уязвим в живот",
+      "circle": 8
+    },
+    "anteus": {
+      "name": "Антей",
+      "health": 200,
+      "damage": 18,
+      "description": "Великан, сын Земли, страж предателей",
+      "weak_spot": "Медлителен из-за размеров",
+      "circle": 9
+    }
+  }
+}
