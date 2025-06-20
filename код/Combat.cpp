@@ -26,7 +26,6 @@ bool Combat::LoadData(const std::string& combat_file, const std::string& enemies
         }
         enemies_stream >> enemies_data_;
 
-        // Если используется player_texts.json:
         std::ifstream player_texts_stream(player_texts_file);
         if (player_texts_stream.is_open()) {
             player_texts_stream >> player_texts_;

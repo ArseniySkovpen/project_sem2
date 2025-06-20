@@ -1,78 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\",
+  "WorkspaceRootPath": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\player_texts.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\player_texts.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\ui_texts.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\ui_texts.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\enemies.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\enemies.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\combat_system.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\combat_system.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Combat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Combat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Combat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Combat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Weapon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Weapon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Circles.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Circles.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Weapon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Weapon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Circles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Circles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\items.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\items.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Item.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Item.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Item.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Item.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Combat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Combat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Weapon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Combat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Combat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Circles.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Weapon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E1B6E118-0DB8-4FCA-A436-4F813B3F5F49}|\u041F\u0440\u043E\u0435\u043A\u0442 \u0418\u0433\u0440\u0430 \u043D\u0430 \u0421\u002B\u002B.vcxproj|solutionrelative:Circles.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -82,17 +62,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 536,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Circles.cpp",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Circles.cpp",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.cpp",
               "RelativeDocumentMoniker": "Circles.cpp",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Circles.cpp",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.cpp",
               "RelativeToolTip": "Circles.cpp",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAMgDAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADQCAAAAAAAAAAAAAMgDAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-07T09:53:44.731Z",
               "IsPinned": true,
@@ -100,11 +80,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Weapon.cpp",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Weapon.cpp",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.cpp",
               "RelativeDocumentMoniker": "Weapon.cpp",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Weapon.cpp",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.cpp",
               "RelativeToolTip": "Weapon.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -113,11 +93,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "Circles.h",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Circles.h",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.h",
               "RelativeDocumentMoniker": "Circles.h",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Circles.h",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Circles.h",
               "RelativeToolTip": "Circles.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -126,37 +106,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\main.cpp",
-              "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAFUAAAAPAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\main.cpp*",
+              "RelativeToolTip": "main.cpp*",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAAABgAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T12:12:18.815Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 8,
               "Title": "Player.cpp",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Player.cpp",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Player.cpp",
               "RelativeDocumentMoniker": "Player.cpp",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Player.cpp",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Player.cpp",
               "RelativeToolTip": "Player.cpp",
-              "ViewState": "AgIAABoAAAAAAAAAAAAAAFUAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAFUAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T12:28:25.705Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Combat.h",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Combat.h",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Combat.h",
               "RelativeDocumentMoniker": "Combat.h",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Combat.h",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Combat.h",
               "RelativeToolTip": "Combat.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -165,11 +145,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "Weapon.h",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Weapon.h",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.h",
               "RelativeDocumentMoniker": "Weapon.h",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Weapon.h",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Weapon.h",
               "RelativeToolTip": "Weapon.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -178,11 +158,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "Player.h",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Player.h",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Player.h",
               "RelativeDocumentMoniker": "Player.h",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Player.h",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Player.h",
               "RelativeToolTip": "Player.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -191,24 +171,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Combat.cpp",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Combat.cpp",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Combat.cpp",
               "RelativeDocumentMoniker": "Combat.cpp",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Combat.cpp",
-              "RelativeToolTip": "Combat.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAvAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Combat.cpp*",
+              "RelativeToolTip": "Combat.cpp*",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-19T18:26:22.199Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 3,
               "Title": "Enemy.h",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Enemy.h",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.h",
               "RelativeDocumentMoniker": "Enemy.h",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Enemy.h",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.h",
               "RelativeToolTip": "Enemy.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -217,11 +197,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 2,
               "Title": "Item.cpp",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Item.cpp",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Item.cpp",
               "RelativeDocumentMoniker": "Item.cpp",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Item.cpp",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Item.cpp",
               "RelativeToolTip": "Item.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -230,11 +210,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 1,
               "Title": "Item.h",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Item.h",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Item.h",
               "RelativeDocumentMoniker": "Item.h",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Item.h",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Item.h",
               "RelativeToolTip": "Item.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -243,13 +223,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 0,
               "Title": "Enemy.cpp",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Enemy.cpp",
+              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.cpp",
               "RelativeDocumentMoniker": "Enemy.cpp",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\Enemy.cpp",
+              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\project_sem2\\\u043A\u043E\u0434\\Enemy.cpp",
               "RelativeToolTip": "Enemy.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T12:28:45.403Z",
               "EditorCaption": ""
@@ -263,92 +243,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "21c084b0-773e-4500-8288-d2a77a212dca",
-        "Display": 0,
-        "X": 881,
-        "Y": 165,
-        "Width": 774,
-        "Height": 912,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ui_texts.json",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\ui_texts.json",
-              "RelativeDocumentMoniker": "assets\\ui_texts.json",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\ui_texts.json",
-              "RelativeToolTip": "assets\\ui_texts.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-19T18:24:56.427Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "player_texts.json",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\player_texts.json",
-              "RelativeDocumentMoniker": "assets\\player_texts.json",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\player_texts.json*",
-              "RelativeToolTip": "assets\\player_texts.json*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-19T18:24:55.648Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "items.json",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\items.json",
-              "RelativeDocumentMoniker": "assets\\items.json",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\items.json",
-              "RelativeToolTip": "assets\\items.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-19T18:24:54.596Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "enemies.json",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\enemies.json",
-              "RelativeDocumentMoniker": "assets\\enemies.json",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\enemies.json",
-              "RelativeToolTip": "assets\\enemies.json",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAEoAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-19T18:24:52.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "combat_system.json",
-              "DocumentMoniker": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\combat_system.json",
-              "RelativeDocumentMoniker": "assets\\combat_system.json",
-              "ToolTip": "C:\\Users\\HYPERPC\\Desktop\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 \u0441\u002B\u002B\\\u043A\u043E\u0434\\assets\\combat_system.json*",
-              "RelativeToolTip": "assets\\combat_system.json*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-19T18:24:49.435Z",
-              "EditorCaption": ""
             }
           ]
         }

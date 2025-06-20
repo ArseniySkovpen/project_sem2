@@ -22,20 +22,19 @@ void GameOver();
 void SetCheckpoint() {
     std::ofstream file("save.txt");
     if (file.is_open()) {
-        file << current_circle; // Сохраняем текущий круг
+        file << current_circle; 
         file.close();
     }
 }
 
 void NewGame() {
     current_circle = 1;
-    Circle1(); // Начинаем игру с первого круга
+    Circle1(); 
 }
 
 void MainMenu() {
     ClearScreen();
 
-    // Загрузка текстов меню
     std::ifstream file("assets/ui_texts.json");
     json ui_texts;
     if (file.is_open()) {
@@ -43,7 +42,6 @@ void MainMenu() {
         file.close();
     }
 
-    // Вывод меню
     for (const auto& line : ui_texts["main_menu"]) {
         std::cout << line.get<std::string>() << "\n";
     }
